@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 import 'package:multi_image_picker/asset.dart';
 import 'package:multi_image_picker/cupertino_options.dart';
+import 'package:multi_image_picker/material_options.dart';
 import 'package:multi_image_picker/metadata.dart';
 
 class MultiImagePicker {
@@ -15,7 +16,7 @@ class MultiImagePicker {
   ///
   /// You must provide [maxImages] option, which will limit
   /// the number of images that the user can choose. On iOS
-  /// you can pass also [options] parameter which should be
+  /// you can pass also [cupertinoOptions] parameter which should be
   /// an instance of [CupertinoOptions] class. It allows you
   /// to customize the look of the image picker. On android
   /// you have to provide custom styles via resource files
@@ -33,7 +34,9 @@ class MultiImagePicker {
   static Future<List<Asset>> pickImages({
     @required int maxImages,
     bool enableCamera = false,
-    CupertinoOptions options = const CupertinoOptions(),
+    CupertinoOptions cupertinoOptions = const CupertinoOptions(),
+    MaterialOptions materialOptions = const MaterialOptions()
+    
   }) async {
     assert(maxImages != null);
 
@@ -45,7 +48,8 @@ class MultiImagePicker {
         await _channel.invokeMethod('pickImages', <String, dynamic>{
       'maxImages': maxImages,
       'enableCamera': enableCamera,
-      'iosOptions': options.toJson(),
+      'iosOptions': cupertinoOptions.toJson(),
+      'androidOptions': materialOptions.toJson()
     });
 
     var assets = List<Asset>();

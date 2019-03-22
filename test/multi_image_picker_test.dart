@@ -49,7 +49,7 @@ void main() {
           selectionStrokeColor: '#0f5e4D',
           selectionTextColor: '#ffffff',
         );
-        await MultiImagePicker.pickImages(maxImages: 5, options: options);
+        await MultiImagePicker.pickImages(maxImages: 5, cupertinoOptions: options);
 
         expect(
           log,
