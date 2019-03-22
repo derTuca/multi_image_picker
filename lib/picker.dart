@@ -18,9 +18,9 @@ class MultiImagePicker {
   /// the number of images that the user can choose. On iOS
   /// you can pass also [cupertinoOptions] parameter which should be
   /// an instance of [CupertinoOptions] class. It allows you
-  /// to customize the look of the image picker. On android
-  /// you have to provide custom styles via resource files
-  /// as specified in the official docs on Github.
+  /// to customize the look of the image picker. On Android
+  /// you can pass the [materialOptions] parameter, which should
+  /// be an instance of [MaterialOptions] class.
   /// As from version  2.1.40 a new parameter [enableCamera]
   /// was added, which allows the user to take a picture
   /// directly from the gallery.
